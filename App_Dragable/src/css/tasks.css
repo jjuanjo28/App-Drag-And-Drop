@@ -1,0 +1,16 @@
+.trash {
+    position: fixed;
+    top: 50%;
+    right: 20px; /* Ajusta este valor según sea necesario */
+    transform: translateY(-50%);
+    background-color: #f44336; /* Color de fondo de la papelera */
+    color: #fff; /* Color del texto */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999; /* Asegúrate de que la papelera esté por encima de otros elementos */
+  }
+  
+  .trash:hover {
+    background-color: #d32f2f; /* Cambia el color de fondo al pasar el ratón sobre la papelera */
+  }

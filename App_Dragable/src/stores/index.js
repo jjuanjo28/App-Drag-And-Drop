@@ -12,22 +12,21 @@ const useStore = create(devtools((set, get) => ({
       set( { dataUser } ) 
   },
 
-  setTasksZustand: (tasksUser) => { set( { tasksUser } )},
+  setTasksZustand: (tasks) => { set( { tasksUser: tasks } )},
+  
   setTaskZustand:async (newTask)=> {
 
  // Obtén el estado actual de tasksUser
 const { tasksUser,dataUser } = get();
 
-
-
 newTask.personaId = dataUser.idPersona
 
 
 try {
-   // Crea una nueva versión de tasksUser con la nueva tarea
-const updatedTasksUser = [...tasksUser, newTask];
-// Actualiza el estado de tasksUser
-set({ tasksUser: updatedTasksUser });
+//    // Crea una nueva versión de tasksUser con la nueva tarea
+// const updatedTasksUser = [...tasksUser, newTask];
+// // Actualiza el estado de tasksUser
+// set({ tasksUser: updatedTasksUser });
   let config = {
     method: "post",
     maxBodyLength: Infinity,
@@ -40,12 +39,13 @@ set({ tasksUser: updatedTasksUser });
   };
 
   const response = await axios.request(config);
- 
-  console.log(JSON.stringify(response.data));
+  
 } catch (error) {
-  console.log(error);
-  // Si hay un error, deshacer la actualización del estado
-  set({ tasksUser });
+  console.log("este es mi error!!!:",error.response.data.error);
+    // Si hay un error, deshacer la actualización del estado
+ if(error.response.data.error == "token expired"){
+  console.log("esto es dataUser:",dataUser)
+ }
 }
 
 let newConfig = {
@@ -59,15 +59,28 @@ let newConfig = {
 
 axios.request(newConfig)
 .then((response) => {
-  console.log("ACA ESTOY CON LAS TASKS")
-  console.log(JSON.stringify(response.data));
-   set({tasksUser: response.data})
- })
+  console.log("ACA ESTOY CON LAS TASKS EN Index.js")
+  const updatedTasksUser = response.data
+  console.log("soy tasksUser despues:",updatedTasksUser)
+  set({tasksUser:updatedTasksUser } );
+  console.log("aca despues de actualizar:", tasksUser)
+}
+
+
+)
 .catch((error) => {
   console.log(error);
 });
 
 
+  },
+  deleteTask:(taskId) => {
+   console.log("soy la task a borrar:",taskId)
+   const {tasksUser} = get()
+   const nuevaLista = tasksUser.filter(task => task.id != taskId)
+  // filter(task => task.id != taskId)
+  set({tasksUser:nuevaLista } );
+ 
   },
   logOut:(dataUser,tasksUser)=>{set({tasksUser:[]}),set({dataUser:[]}) }
 

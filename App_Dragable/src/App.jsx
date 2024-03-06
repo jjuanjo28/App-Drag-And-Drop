@@ -20,23 +20,11 @@ function App() {
   const { setUserZustand, setTasksZustand,logOut } = mainStore()
   const cookies = new Cookies
   const [user, setUser] = useState([])
- // const [tasks, setTasks] = useState([])
+
   const [logged, setLoged] = useState(false)
   const [idNumber, setIdNumber] = useState("")
 
-  // useEffect(() => {
-  //   if(user.length != 0){
-  //     setLoged(true)
-     
-  //     fetchUser(user)
-  // } 
-  //  if(user.length == 0){
-  //   setLoged(false)
-   
-  //  }
-
   
-  // }, [user])
 useEffect(() => {
 if(logged){
 console.log("el user esta logueado")
@@ -82,7 +70,7 @@ function captureTasks(id) {
   
   axios.request(config)
   .then((response) => {
-    console.log("ACA ESTOY CON LAS TASKS")
+    console.log("ACA ESTOY CON LAS TASKS en App.jsx")
     console.log(JSON.stringify(response.data));
     setTasksZustand(response.data)
   })
@@ -107,7 +95,7 @@ function captureTasks(id) {
         <Route path='/componenteUno' element={<ComponenteUno/>}/>
         <Route path='/componenteDos' element={<ComponenteDos/>}/>
         <Route path='/componenteTres' element={<ComponenteTres/>}/>
-        <Route path='/taskList' element={<Tasks looged={logged} setLooged={setLoged}/>}/>
+        <Route path='/taskList' element={<Tasks />}/>
        </Routes>
      
     
