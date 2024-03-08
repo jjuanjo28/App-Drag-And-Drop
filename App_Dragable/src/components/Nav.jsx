@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ButtonRed } from './Botones'
 import mainStore from "../stores/index.js"
+import "./Nav.css"
 export default function Nav({setLoged, logged}) {
   const { logOut } = mainStore()
    useEffect(() => {
@@ -14,10 +14,10 @@ export default function Nav({setLoged, logged}) {
 
     const navigate = useNavigate()
   return (
-    <div style={{backgroundColor:"blue"}}>
+    <div className='navbar'>
      <button onClick={()=> navigate("/login")}>Login</button>
      <button onClick={salir}>Logout</button>
-     {logged? (<ButtonRed onClick={()=> navigate("/tasklist")} text={"Task List"}/>):null}
+     {logged? (<button onClick={()=> navigate("/tasklist")} >Task List</button>):null}
      {logged? (<button onClick={()=> navigate("/")}>Home</button>):null}
      </div>
   )

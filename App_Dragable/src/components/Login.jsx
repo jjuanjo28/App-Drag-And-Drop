@@ -3,7 +3,7 @@ import {  useNavigate } from 'react-router-dom'
 import mainStore from "../stores/index.js"
 import axios from "axios"
 import Cookies from "universal-cookie"
-
+import "./Login.css"
 export default function Login({setUser, setLoged, setIdNumber}) {
   const {setUserZustand} = mainStore()
   const navigate = useNavigate()
@@ -13,9 +13,10 @@ export default function Login({setUser, setLoged, setIdNumber}) {
  
   useEffect(() => {
     if(usuario != "") {
+      // que pasa aca??????????
       console.log(usuarioID)
       
-    //  getUser(usuario)
+   
   }
 
   }, [usuario])
@@ -36,8 +37,6 @@ export default function Login({setUser, setLoged, setIdNumber}) {
     .then((response) => {
       const newdata = response.data
       console.log("soy el newData en la resp capture user:",newdata)
-      // aca tengo que agregar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     // setUserZustand(newdata)
       setIdNumber(newdata.idUser)
       setLoged(true)
       const cookies = new Cookies
@@ -53,10 +52,7 @@ export default function Login({setUser, setLoged, setIdNumber}) {
   }
   const getUser = async (usuario) => {
    captureUser(usuario)
-
-   
-     
-  }
+}
   
   const getUsuario = () => {
  
@@ -64,45 +60,45 @@ export default function Login({setUser, setLoged, setIdNumber}) {
       const  name = userName
       const pass = password
       getUser({name:name,password:pass})
-      
-    //  if(data.some((usuario)=> usuario.user == name )){
-    //   const test = data.filter((data)=> data.user == name && data.password == pass)
-    //   setUser(test)
-
-        navigate("/")
+      navigate("/")
   
   
-    //  } else {
-         
-    //      alert("no existe su usuario!!!!")
-    //  }
-  
+     
      
   }
 
   return (
-    <div>
-     <form onSubmit={getUsuario}>
-     <label>
-        User:
+    <div className='container'>
+    
+     <form onSubmit={getUsuario} className='form'>
+     <div className='interno'>
+
+     <label className='label'>
+         User:
         <input
             value={userName}
             onChange={(e)=> setUserName(e.target.value)}
             type='text'
+            className="form__input"
         />
      </label>
-     <label>
+     </div>
+     <div className='interno'>
+
+     <label className='label'>
         password:
         <input
             value={password}
             onChange={(e)=> setPassword(e.target.value)}
-            type='text'
+            type="password"
+            className="form__input"
         />
      </label>
-     <button onSubmit={getUsuario}>Login User</button>
+     </div>
+     <button onSubmit={getUsuario} className="form__button">Login User</button>
 
      </form>
-      <button onClick={()=>console.log(usuario)}>ver el usuario</button>
-    </div>
+     </div>
+   
   )
 }

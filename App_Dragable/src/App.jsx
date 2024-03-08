@@ -82,11 +82,12 @@ function captureTasks(id) {
 }
  
   return (
-    <>
-     <div>
+    
+     <div className='container'>
       <Router>
+      <h1 className='titulo'>Dragable App ToDo</h1>
       <Nav setUser={setUser} user={user} logged={logged} setLoged={setLoged}/>
-      
+     
        <Routes>
         <Route exact path="/" element={<ComponenteHome logged={logged}/>} />
         <Route path='/login' element={<Login setUser={setUser} setLoged={setLoged} setIdNumber={setIdNumber}/>}/>
@@ -101,7 +102,7 @@ function captureTasks(id) {
     
       </Router>
       </div>
-    </>
+   
   )
 }
 
