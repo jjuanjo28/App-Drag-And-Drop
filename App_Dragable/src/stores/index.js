@@ -23,10 +23,7 @@ newTask.personaId = dataUser.idPersona
 
 
 try {
-//    // Crea una nueva versión de tasksUser con la nueva tarea
-// const updatedTasksUser = [...tasksUser, newTask];
-// // Actualiza el estado de tasksUser
-// set({ tasksUser: updatedTasksUser });
+
   let config = {
     method: "post",
     maxBodyLength: Infinity,

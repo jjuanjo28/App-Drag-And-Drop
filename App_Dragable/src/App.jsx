@@ -85,7 +85,7 @@ function captureTasks(id) {
     
      <div className='container'>
       <Router>
-      <h1 className='titulo'>Dragable App ToDo</h1>
+      {/* <h1 className='titulo'>Dragable App ToDo</h1> */}
       <Nav setUser={setUser} user={user} logged={logged} setLoged={setLoged}/>
      
        <Routes>

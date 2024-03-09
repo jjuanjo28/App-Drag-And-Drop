@@ -15,10 +15,10 @@ export default function Nav({setLoged, logged}) {
     const navigate = useNavigate()
   return (
     <div className='navbar'>
-     <button onClick={()=> navigate("/login")}>Login</button>
-     <button onClick={salir}>Logout</button>
-     {logged? (<button onClick={()=> navigate("/tasklist")} >Task List</button>):null}
-     {logged? (<button onClick={()=> navigate("/")}>Home</button>):null}
+     <button className='button-nav' onClick={()=> navigate("/login")}>Login</button>
+     <button className='button-nav' onClick={salir}>Logout</button>
+     {logged? (<button className='button-nav' onClick={()=> navigate("/tasklist")} >Task List</button>):null}
+     {logged? (<button className='button-nav' onClick={()=> navigate("/")}>Home</button>):null}
      </div>
   )
 }

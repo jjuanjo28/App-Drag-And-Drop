@@ -6,7 +6,7 @@ export default function ComponenteDos() {
   return (
     <div>
     <h1>Soy el componente numero DOS</h1>
-      <button onClick={()=>navigate('/')}>Back to Home</button>
-    </div>
+    
+       </div>
   )
 }

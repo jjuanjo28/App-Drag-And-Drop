@@ -16,12 +16,29 @@
     background-color: #d32f2f; /* Cambia el color de fondo al pasar el ratón sobre la papelera */
   }
 
-  .task-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start; /* Alinea las tareas hacia arriba */
-    
-  }
+ .task-contianer{
+  display:flex;
+  flex-direction:row;
+ } 
+
+  .task-container-uno {
+  margin-top: 100px;   
+  width: 1030px;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: flex-start;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: flex-start;
+    }
+    .task-container-dos{
+      width: 300px;
+      height:70vh;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
   
   .task-item {
     flex: 0 0 calc(33.33% - 100px); /* 33.33% para que haya tres tareas por fila */

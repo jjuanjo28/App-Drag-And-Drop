@@ -37,6 +37,7 @@
     background-color: blue;
     color: white;
     cursor: pointer;
+    height: 50px;
   }
   .label {
     width: 100px;

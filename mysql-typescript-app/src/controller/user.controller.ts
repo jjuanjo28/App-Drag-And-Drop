@@ -25,7 +25,7 @@ export const getLogin = async (req: Request, res: Response) => {
       const token = jwt.sign(
         {
           user: isUserExist,
-          exp: Date.now() + 120 * 1000
+          exp: Date.now() + 600 * 1000
         },
         `${SECRET}`
       );

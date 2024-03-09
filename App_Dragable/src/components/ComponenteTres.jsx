@@ -6,7 +6,7 @@ const navigate = useNavigate()
   return (
     <div>
       <h1>Soy el componente numero Tres</h1>
-      <button onClick={()=>navigate('/')}>Back to Home</button>
+     
     </div>
   )
 }
