@@ -48,7 +48,9 @@ export default function Tasks() {
     <div className="task-contianer">
 
       <div key={id} className="task-container-uno">
+        
         {tasksUser.map((task) => (
+         
           <div
             className="task-item"
             onDragStart={(e) => {
@@ -65,6 +67,7 @@ export default function Tasks() {
             />
           </div>
         ))}
+
       </div>
 
       <div className="task-container-dos">

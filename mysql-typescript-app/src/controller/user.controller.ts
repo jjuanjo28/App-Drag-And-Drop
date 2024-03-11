@@ -10,7 +10,7 @@ export const getLogin = async (req: Request, res: Response) => {
     const user = req.body;
     const { name, password } = user;
 
-    const isUserExist:any = await PersonModel.findOne({
+    const isUserExist: any = await PersonModel.findOne({
       where: {
         name: name
       }
@@ -31,8 +31,8 @@ export const getLogin = async (req: Request, res: Response) => {
       );
 
       const decoded: any = jwt.verify(token, `${SECRET}`);
-      console.log("soy decoded:",decoded);
-      
+      console.log("soy decoded:", decoded);
+
 
       res.status(200).json({
         idUser: decoded.user.idPersona,
@@ -75,13 +75,13 @@ export const getAllUsers = async (req: Request, res: Response) => {
 export const getUser = async (req: Request, res: Response) => {
 
   try {
-  
+
     const user = await PersonModel.findAll({
       where: {
         idPersona: req.params.id,
       },
     });
-      res.json(user[0]); // de aca sacaba el usuario completo 
+    res.json(user[0]); // de aca sacaba el usuario completo 
   } catch (error) {
     res.json({ message: error });
   }
@@ -90,12 +90,27 @@ export const getUser = async (req: Request, res: Response) => {
 // crear un nuevo user
 
 export const createUser = async (req: Request, res: Response) => {
+
   try {
-    console.log("soy req.body:", req)
+    const email = await PersonModel.findAll({
+      where: {
+        email: req.body.email,
+      }
+    },
+    );
+    const user = await PersonModel.findAll({
+      where: {
+        name: req.body.name,
+      }
+    },
+    );
+    if (email.length != 0) return res.status(403).json({ message: "el email ya esta uso" })
+    if (user.length != 0) return res.status(403).json({ message: "el nombre ya esta uso" })
     await PersonModel.create(req.body);
 
+
     res.json({
-      message: "Usuario Creado Correctamente",
+      message: "Usuario Creado Correctamente"
     });
   } catch (error) {
     res.json({ message: error });
@@ -106,7 +121,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const editUser = async (req: Request, res: Response) => {
   try {
- 
+
     await PersonModel.update(req.body, {
       where: { idPersona: req.params.id },
     });
@@ -122,7 +137,7 @@ export const editUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-  
+
     await PersonModel.destroy(
       {
         where: { idPersona: req.params.id },

@@ -9,7 +9,7 @@ const useStore = create(devtools((set, get) => ({
   tasksUser: [],
 
   setUserZustand: (dataUser) => { 
-      set( { dataUser } ) 
+  set( { dataUser } ) 
   },
 
   setTasksZustand: (tasks) => { set( { tasksUser: tasks } )},
@@ -18,10 +18,7 @@ const useStore = create(devtools((set, get) => ({
 
  // Obtén el estado actual de tasksUser
 const { tasksUser,dataUser } = get();
-
 newTask.personaId = dataUser.idPersona
-
-
 try {
 
   let config = {

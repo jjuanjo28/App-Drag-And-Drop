@@ -13,6 +13,7 @@ import Tasks from './components/Tasks';
 import CreateUser from './components/CreateUser';
 import CreateTask from './components/CreateTask.jsx';
 import axios from 'axios';
+import EditTask from './components/EditTask.jsx';
 
 
 function App() {
@@ -52,7 +53,7 @@ const adquiereUser=()=>{
   .then((response) => {
     setUserZustand(response.data)
     captureTasks(idNumber)
-
+  
   })
   .catch((error) => {
     console.log(error);
@@ -83,16 +84,18 @@ function captureTasks(id) {
  
   return (
     
+
      <div className='container'>
       <Router>
-      {/* <h1 className='titulo'>Dragable App ToDo</h1> */}
+     
       <Nav setUser={setUser} user={user} logged={logged} setLoged={setLoged}/>
      
        <Routes>
         <Route exact path="/" element={<ComponenteHome logged={logged}/>} />
         <Route path='/login' element={<Login setUser={setUser} setLoged={setLoged} setIdNumber={setIdNumber}/>}/>
-        <Route path='/createUser' element={<CreateUser setUser={setUser} setLoged={setLoged}/>}/>
+        <Route path='/createUser' element={<CreateUser logged={logged} setLoged={setLoged} setIdNumber={setIdNumber}/>}/>
         <Route path='/createTask' element={<CreateTask/>}/>
+        <Route path="/editTask/:id" element={<EditTask/>}/>
         <Route path='/componenteUno' element={<ComponenteUno/>}/>
         <Route path='/componenteDos' element={<ComponenteDos/>}/>
         <Route path='/componenteTres' element={<ComponenteTres/>}/>

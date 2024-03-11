@@ -21,7 +21,7 @@
   flex-direction:row;
  } 
 
-  .task-container-uno {
+ .task-container-uno {
   margin-top: 100px;   
   width: 1030px;
  display: flex;
@@ -31,7 +31,7 @@
  flex-wrap: wrap;
  align-items: flex-start;
     }
-    .task-container-dos{
+.task-container-dos{
       width: 300px;
       height:70vh;
       display: flex;
